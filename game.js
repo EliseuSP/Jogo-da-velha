@@ -27,17 +27,26 @@ function verificaLinha(linha) {
     alert(`${ganhador} Ganhou`)
     document.getElementById('resultado').innerText = ganhador;
   }
-}
 
+}
+function verificarcoluna(listaElementos){
+  console.log(listaElementos)
+}
 function verificaTodasLinhas(lista) {
   verificaLinha(lista[0]);
   verificaLinha(lista[1]);
   verificaLinha(lista[2]);
 }
 
-function verificaGanhador() {
+function verificaGanhador() { 
   const jogo = document.getElementById('jogo');
-  verificaTodasLinhas(jogo.children);
+ verificaTodasLinhas(jogo.children);
+ verificartodascolunas(jogo.children); 
+}
+function verificartodascolunas(lista){
+  verificarcoluna(lista[0])
+  verificarcoluna(lista[2])
+  verificarcoluna(lista[3])
 }
 
 function desenhe(e) {
@@ -52,8 +61,7 @@ function desenhe(e) {
         desenharX(id);
         verificaGanhador();
         ultimoClick = 'X'
+      }
     }
   }
-}
-
 document.addEventListener('click', desenhe);
