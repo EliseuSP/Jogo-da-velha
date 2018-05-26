@@ -30,8 +30,15 @@ function verificaLinha(linha) {
 
 }
 function verificarcoluna(listaElementos){
-  console.log(listaElementos)
+  if (listaElementos[0].textContent == listaElementos[1].textContent
+  && listaElementos[0].textContent == listaElementos[2].textContent) {
+    if (taVazio(listaElementos[1]))return;
+    const ganhador = listaElementos[1].textContent;
+    alert(`${ganhador} Ganhou`)
+    document.getElementById('resultado').innerText = ganhador;
+  }
 }
+
 function verificaTodasLinhas(lista) {
   verificaLinha(lista[0]);
   verificaLinha(lista[1]);
@@ -44,9 +51,21 @@ function verificaGanhador() {
  verificartodascolunas(jogo.children); 
 }
 function verificartodascolunas(lista){
-  verificarcoluna(lista[0])
-  verificarcoluna(lista[2])
-  verificarcoluna(lista[3])
+  const l0c0 = lista[0].children[0]
+  const l1c0 = lista[1].children[0]
+  const l2c0 = lista[2].children[0]
+  const coluna0 = [l0c0,l1c0,l2c0]
+  const l0c1 = lista[0].children[1]
+  const l1c1 = lista[1].children[1]
+  const l2c1 = lista[2].children[1]
+  const coluna1 = [l0c1,l1c1,l2c1]
+  const l0c2 = lista[0].children[2]
+  const l1c2 = lista[1].children[2]
+  const l2c2 = lista[2].children[2]
+  const coluna2 = [l0c2,l1c2,l2c2]
+  verificarcoluna(coluna0)
+  verificarcoluna(coluna1)
+  verificarcoluna(coluna2)
 }
 
 function desenhe(e) {
